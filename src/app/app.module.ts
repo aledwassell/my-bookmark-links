@@ -18,6 +18,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import {MatTableModule} from '@angular/material/table';
     MatInputModule,
     ReactiveFormsModule,
     MatTableModule,
+    MatIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

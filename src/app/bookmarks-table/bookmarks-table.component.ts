@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Bookmark } from 'src/models/bookmark.model';
+import { Component, Input, OnInit,EventEmitter, Output } from '@angular/core';
+import { Bookmark, BookmarkFromValue } from 'src/models/bookmark.model';
 import {animate, state, style, transition, trigger} from '@angular/animations';
 
 @Component({
@@ -16,6 +16,9 @@ import {animate, state, style, transition, trigger} from '@angular/animations';
 })
 export class BookmarksTableComponent {
   @Input() bookmarks: Bookmark[] | null = null;
-  columns = ['name', 'url'];
+  @Output() delete = new EventEmitter<string>();
+  @Output() formValue = new EventEmitter<BookmarkFromValue>()
+  @Output() submitFormValue = new EventEmitter<string>()
+  columns = ['bookmarks', 'actions'];
   expandedId: string = '';
 }

@@ -1,12 +1,18 @@
 <div fxFlexFill fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="10px">
   <mat-card>
       <mat-card-content>
-        <app-bookmark-form #bookmarkForm></app-bookmark-form>
+        <app-bookmark-form #bookmarkForm (formValue)="handleUpdateBookmarkFormValue($event)"></app-bookmark-form>
       </mat-card-content>
       <mat-card-actions fxLayoutAlign="space-between">
           <button [disabled]="!(bookmarks$ | async)?.length" mat-raised-button (click)="clearBookmarks(); bookmarkForm.formGroup.reset()" color="warn">Clear All</button>
           <button [disabled]="bookmarkForm.formGroup.invalid" mat-raised-button (click)="addBookmark(); bookmarkForm.formGroup.reset()" color="primary">Add</button>
       </mat-card-actions>
   </mat-card>
-  <app-bookmarks-table [bookmarks]="bookmarks$ | async"></app-bookmarks-table>
+  <app-bookmarks-table
+    *ngIf="(bookmarks$ | async)?.length"
+    [bookmarks]="bookmarks$ | async"
+    (delete)="deleteBookmark($event)"
+    (formValue)="handleUpdateBookmarkFormValue($event)"
+    (submitFormValue)="handleUpdateTableRowItem($event)"
+  ></app-bookmarks-table>
 </div>
