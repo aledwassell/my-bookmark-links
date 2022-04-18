@@ -1,8 +1,8 @@
-import { selectContacts } from './store/selectors/contacts.selectors';
+import { selectBookmarks } from './store/selectors/bookmarks.selectors';
 import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { filter, tap } from 'rxjs/operators';
-import { addContact } from './store/actions/contacts.actions';
+import { filter } from 'rxjs/operators';
+import { addBookmark, clearBookmarks } from './store/actions/bookmarks.actions';
 
 @Component({
   selector: 'app-root',
@@ -10,13 +10,15 @@ import { addContact } from './store/actions/contacts.actions';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constacts$ = this.store.select(selectContacts).pipe(tap(v => console.log(v)), filter(c => !!c.length));
+  bookmarks$ = this.store.select(selectBookmarks);
 
-  addContact() {
-    this.store.dispatch(addContact({contact: 'aled'}))
+  addBookmark() {
+    this.store.dispatch(addBookmark());
   }
 
-  constructor(
-    private store: Store
-  ) {}
+  clearBookmarks() {
+    this.store.dispatch(clearBookmarks());
+  }
+
+  constructor(private store: Store) {}
 }

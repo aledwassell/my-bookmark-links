@@ -1,4 +1,4 @@
-import * as fromContacts from './contacts.actions';
+import * as fromContacts from './bookmarks.actions';
 
 describe('addContactss', () => {
   it('should return an action', () => {

@@ -1,20 +1,12 @@
 <div fxFlexFill fxLayoutAlign="center center" fxLayout="column" fxLayoutGap="10px">
   <mat-card>
       <mat-card-content>
-          [form]
+        <app-bookmark-form #bookmarkForm></app-bookmark-form>
       </mat-card-content>
-      <mat-card-actions align="start">
-          <button mat-raised-button (click)="addContact()" color="primary">Action1</button>
-
+      <mat-card-actions fxLayoutAlign="space-between">
+          <button [disabled]="!(bookmarks$ | async)?.length" mat-raised-button (click)="clearBookmarks(); bookmarkForm.formGroup.reset()" color="warn">Clear All</button>
+          <button [disabled]="bookmarkForm.formGroup.invalid" mat-raised-button (click)="addBookmark(); bookmarkForm.formGroup.reset()" color="primary">Add</button>
       </mat-card-actions>
   </mat-card>
-  <mat-card *ngFor="let contact of constacts$ | async">
-    <mat-card-content>
-        {{contact}}
-    </mat-card-content>
-    <mat-card-actions align="start">
-        <button mat-raised-button color="primary">Action1</button>
-
-    </mat-card-actions>
-  </mat-card>
+  <app-bookmarks-table [bookmarks]="bookmarks$ | async"></app-bookmarks-table>
 </div>
