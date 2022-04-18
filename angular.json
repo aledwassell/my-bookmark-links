@@ -112,5 +112,8 @@
       }
     }
   },
-  "defaultProject": "phantom-contacts-list"
+  "defaultProject": "phantom-contacts-list",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }

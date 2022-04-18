@@ -1,0 +1,17 @@
+<form [formGroup]="formGroup">
+  <mat-form-field>
+    <input matInput formControlName="name" placeholder="Google">
+    <mat-error *ngIf="nameCtrl?.hasError('required')">
+      Name is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field>
+    <input matInput formControlName="url" placeholder="https://google.com">
+    <mat-error *ngIf="urlCtrl?.hasError('required')">
+      URL is <strong>required</strong>
+    </mat-error>
+    <mat-error *ngIf="urlCtrl?.hasError('pattern')">
+      Should contain <strong>https://</strong> eg https://google.com
+    </mat-error>
+  </mat-form-field>
+</form>
