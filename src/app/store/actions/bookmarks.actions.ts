@@ -1,4 +1,4 @@
-import { Bookmark, BookmarkFromValue } from './../../../models/bookmark.model';
+import { BookmarkFromValue } from './../../../models/bookmark.model';
 import { createAction, props } from '@ngrx/store';
 
 export const bookmarkFormValue = createAction(

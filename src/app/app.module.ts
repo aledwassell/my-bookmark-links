@@ -11,7 +11,6 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { EffectsModule } from '@ngrx/effects';
-import { AppEffects } from './store/app.effects';
 import { BookmarksTableComponent } from './bookmarks-table/bookmarks-table.component';
 import { BookmarkFormComponent } from './bookmark-form/bookmark-form.component';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -33,7 +32,6 @@ import {MatPaginatorModule} from '@angular/material/paginator';
     StoreModule.forRoot({}, {}),
     StoreModule.forRoot({ bookmarks: reducer }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
-    EffectsModule.forRoot([AppEffects]),
     FlexLayoutModule,
     ReactiveFormsModule,
     // Material modules.
