@@ -36,7 +36,7 @@ export class BookmarkFormComponent implements OnInit, OnDestroy {
   ngOnInit() {
     this.formGroup.valueChanges
     .pipe(
-      debounceTime(500),
+      debounceTime(500), // Debounce by half a second so that we don't spam the state with values each keystroke.
       tap(value => this.formValue.emit(value)),
       takeUntil(this.destroy$),
     ).subscribe();
@@ -46,6 +46,7 @@ export class BookmarkFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    // Unsubscribe from all subscriptions when the component is destroyed.
     this.destroy$.next();
     this.destroy$.complete();
   }
