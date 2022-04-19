@@ -1,9 +1,9 @@
-import { Bookmark } from './../../../models/bookmark.model';
+import { Bookmark, BookmarkFromValue } from './../../../models/bookmark.model';
 import { createAction, props } from '@ngrx/store';
 
 export const bookmarkFormValue = createAction(
   '[Bookmarks] Add Bookmark Form Value',
-  props<{ name: string, url: string }>()
+  props<BookmarkFromValue>()
 );
 
 export const addBookmark = createAction('[Bookmarks] Add Bookmark');
@@ -15,6 +15,7 @@ export const deleteBookmark = createAction(
   props<{ id: string }>()
 );
 
-export const editBookmark = createAction(
-  '[Bookmarks] Edit Bookmark'
+export const updateBookmark = createAction(
+  '[Bookmarks] Edit Bookmark',
+  props<{ id: string }>()
 );

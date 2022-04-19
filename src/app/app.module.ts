@@ -18,6 +18,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import { MatInputModule} from '@angular/material/input';
 import {MatTableModule} from '@angular/material/table';
+import {MatIconModule} from '@angular/material/icon';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -33,12 +35,15 @@ import {MatTableModule} from '@angular/material/table';
     !environment.production ? StoreDevtoolsModule.instrument() : [],
     EffectsModule.forRoot([AppEffects]),
     FlexLayoutModule,
+    ReactiveFormsModule,
+    // Material modules.
     MatButtonModule,
     MatCardModule,
     MatFormFieldModule,
     MatInputModule,
-    ReactiveFormsModule,
     MatTableModule,
+    MatIconModule,
+    MatPaginatorModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

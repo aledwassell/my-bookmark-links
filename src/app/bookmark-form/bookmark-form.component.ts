@@ -1,16 +1,19 @@
+import { Component, OnDestroy, EventEmitter, OnInit, Output, Input } from '@angular/core';
+import { BookmarkFromValue } from './../../models/bookmark.model';
 import { RegexEnum } from './../../enums/regexEnum.enum';
 import { bookmarkFormValue } from './../store/actions/bookmarks.actions';
-import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
-import { debounce, debounceTime, distinctUntilChanged, distinctUntilKeyChanged, Subject, takeUntil, tap } from 'rxjs';
+import { debounceTime, Subject, takeUntil, tap } from 'rxjs';
 
 @Component({
   selector: 'app-bookmark-form',
   templateUrl: './bookmark-form.component.html',
   styleUrls: ['./bookmark-form.component.scss']
 })
-export class BookmarkFormComponent implements OnInit {
+export class BookmarkFormComponent implements OnInit, OnDestroy {
+  @Input() value: BookmarkFromValue | null = null;
+  @Output() formValue = new EventEmitter<BookmarkFromValue>();
   private destroy$ = new Subject<void>();
 
   formGroup = new FormGroup({
@@ -34,9 +37,12 @@ export class BookmarkFormComponent implements OnInit {
     this.formGroup.valueChanges
     .pipe(
       debounceTime(500),
-      tap(value => this.store.dispatch(bookmarkFormValue(value))),
+      tap(value => this.formValue.emit(value)),
       takeUntil(this.destroy$),
     ).subscribe();
+    if(this.value) {
+      this.formGroup.patchValue(this.value);
+    }
   }
 
   ngOnDestroy() {
