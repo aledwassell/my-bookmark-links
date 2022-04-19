@@ -66,9 +66,6 @@ THE SOFTWARE.
 @angular/platform-browser
 MIT
 
-@ngrx/effects
-MIT
-
 @ngrx/store
 MIT
 
