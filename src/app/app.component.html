@@ -10,9 +10,11 @@
   </mat-card>
   <app-bookmarks-table
     *ngIf="(bookmarks$ | async)?.length"
+    [bookmarksLength]="bookmarksLength"
     [bookmarks]="bookmarks$ | async"
     (delete)="deleteBookmark($event)"
     (formValue)="handleUpdateBookmarkFormValue($event)"
     (submitFormValue)="handleUpdateTableRowItem($event)"
+    (paginate)="paginationEvent.next($event)"
   ></app-bookmarks-table>
 </div>

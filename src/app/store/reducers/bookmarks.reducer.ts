@@ -18,7 +18,7 @@ export const initialState: State = {
   bookmarks: [
     {name: 'Google', url: 'https://google.com', id: '9f4df852-424f-4cb6-9335-1d5b804d1c91'},
     {name: 'Stackblitz', url: 'https://stackblitz.com/', id: '31aa1424-cdfc-4d17-83d0-44b572d3bdb7'},
-    {name: 'MDN', url: 'https://developer.mozilla.org/', id: 'f02a637b-bac8-4a16-8408-9806b8ff438a'}
+    {name: 'MDN', url: 'https://developer.mozilla.org/', id: 'f02a637b-bac8-4a16-8408-9806b8ff438a'},
   ],
 };
 
